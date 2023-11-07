@@ -15,7 +15,7 @@ function App() {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    setInputValues({ ...inputValues, [name]: parseFloat(value) });
   }
 
   const investmentResults = calculateInvestmentResults(inputValues);

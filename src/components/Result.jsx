@@ -9,19 +9,31 @@ export default function Result({ investmentValues }) {
     return <div>No data available</div>;
   }
 
+  console.log(investmentValues);
+
   return (
     <div id="results">
-      <h2>Investment Results</h2>
-      <ul>
+      <table>
         {investmentValues.map((item) => (
-          <li key={item.year}>
-            Year: {item.year}, Interest Value: {formatter.format(item.interest)}
-            , Interest Year: {formatter.format(item.valueEndOfYear)}, Total
-            Interest: {formatter.format(item.interestEarnedInYear)}, Invested
-            Capital: {formatter.format(item.investmentValue)}
-          </li>
+          <tr key={item.year}>
+            <thead>
+              <th>Year: {item.year}</th>
+            </thead>
+            <tbody>
+              <td>Investment Value: {formatter.format(item.valueEndOfYear)}</td>
+              <td>Interest Year: {formatter.format(item.interest)}</td>
+              <td>
+                Total Interest:{" "}
+                {formatter.format(item.interest + item.annualInvestment)}
+              </td>
+              <td>
+                Invested Capital:{" "}
+                {formatter.format(item.interest + item.annualInvestment)}
+              </td>
+            </tbody>
+          </tr>
         ))}
-      </ul>
+      </table>
     </div>
   );
 }
