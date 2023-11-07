@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 export default function UserInput({ onChange, inputValues }) {
   return (
-    <section id="user-input" className="input-group">
+    <section id="user-input">
       <div className="input-group">
         <p>
           <label>Initial Investment</label>

@@ -12,29 +12,32 @@ export default function Result({ investmentValues }) {
   console.log(investmentValues);
 
   return (
-    <div id="results">
-      <table>
-        {investmentValues.map((item) => (
-          <tr key={item.year}>
-            <thead>
-              <th>Year: {item.year}</th>
-            </thead>
-            <tbody>
-              <td>Investment Value: {formatter.format(item.valueEndOfYear)}</td>
-              <td>Interest Year: {formatter.format(item.interest)}</td>
-              <td>
-                Total Interest:{" "}
-                {formatter.format(item.interest + item.annualInvestment)}
-              </td>
-              <td>
-                Invested Capital:{" "}
-                {formatter.format(item.interest + item.annualInvestment)}
-              </td>
-            </tbody>
+    <table id="result">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Interest (Year)</th>
+          <th>Total Interest</th>
+          <th>Invested Capital</th>
+        </tr>
+      </thead>
+      <tbody>
+        {investmentValues.map((yearData) => (
+          <tr key={yearData.year}>
+            <td>{yearData.year}</td>
+            <td>{formatter.format(yearData.valueEndOfYear)}</td>
+            <td>{formatter.format(yearData.interest)}</td>
+            <td>
+              {formatter.format(yearData.interest + yearData.annualInvestment)}
+            </td>
+            <td>
+              {formatter.format(yearData.interest + yearData.annualInvestment)}
+            </td>
           </tr>
         ))}
-      </table>
-    </div>
+      </tbody>
+    </table>
   );
 }
 
